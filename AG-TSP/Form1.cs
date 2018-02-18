@@ -121,5 +121,12 @@ namespace AG_TSP
                 return number * Fatorial(number - 1);
             }
         }
+
+        private void btnCriarPop_Click(object sender, EventArgs e)
+        {
+            ConfigurationGA.SizePopulation = 5;
+            Population population = new Population();
+            Console.WriteLine(population.GetBest() +Environment.NewLine+ population.GetBad());
+        }
     }
 }

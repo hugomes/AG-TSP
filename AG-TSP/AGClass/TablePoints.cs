@@ -40,6 +40,8 @@ namespace AG_TSP.AGClass
                         Math.Pow(int.Parse(Y[i].ToString()) - int.Parse(Y[j].ToString()), 2));
                 }
             }
+
+            ConfigurationGA.SizeChromosome = PointCount;
         }
 
         /// <summary>

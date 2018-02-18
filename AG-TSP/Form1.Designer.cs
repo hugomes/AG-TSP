@@ -177,6 +177,7 @@
             this.btnCriarPop.TabIndex = 13;
             this.btnCriarPop.Text = "Criar População";
             this.btnCriarPop.UseVisualStyleBackColor = true;
+            this.btnCriarPop.Click += new System.EventHandler(this.btnCriarPop_Click);
             // 
             // gbMutacao
             // 

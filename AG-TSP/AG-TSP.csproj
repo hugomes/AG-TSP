@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AGClass\ConfigurationGA.cs" />
+    <Compile Include="AGClass\Individual.cs" />
+    <Compile Include="AGClass\Population.cs" />
     <Compile Include="AGClass\TablePoints.cs" />
     <Compile Include="AGClass\Utils.cs" />
     <Compile Include="Form1.cs">
