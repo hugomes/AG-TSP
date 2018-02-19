@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.zedMedia = new ZedGraph.ZedGraphControl();
             this.lbMenorDistancia = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lbEvolucoes = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@
             this.txtEvolucao = new System.Windows.Forms.MaskedTextBox();
             this.txtTaxaMutacao = new System.Windows.Forms.MaskedTextBox();
             this.txtTaxaCrossover = new System.Windows.Forms.MaskedTextBox();
-            this.txtNamePop = new System.Windows.Forms.MaskedTextBox();
+            this.txtTamanhoPop = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel1.Controls.Add(this.zedGraphControl1);
+            this.panel1.Controls.Add(this.zedMedia);
             this.panel1.Controls.Add(this.lbMenorDistancia);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lbEvolucoes);
@@ -81,7 +81,7 @@
             this.panel1.Controls.Add(this.txtEvolucao);
             this.panel1.Controls.Add(this.txtTaxaMutacao);
             this.panel1.Controls.Add(this.txtTaxaCrossover);
-            this.panel1.Controls.Add(this.txtNamePop);
+            this.panel1.Controls.Add(this.txtTamanhoPop);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -91,19 +91,19 @@
             this.panel1.Size = new System.Drawing.Size(431, 462);
             this.panel1.TabIndex = 1;
             // 
-            // zedGraphControl1
+            // zedMedia
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(15, 263);
-            this.zedGraphControl1.Name = "zedGraphControl1";
-            this.zedGraphControl1.ScrollGrace = 0D;
-            this.zedGraphControl1.ScrollMaxX = 0D;
-            this.zedGraphControl1.ScrollMaxY = 0D;
-            this.zedGraphControl1.ScrollMaxY2 = 0D;
-            this.zedGraphControl1.ScrollMinX = 0D;
-            this.zedGraphControl1.ScrollMinY = 0D;
-            this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(412, 181);
-            this.zedGraphControl1.TabIndex = 20;
+            this.zedMedia.Location = new System.Drawing.Point(15, 263);
+            this.zedMedia.Name = "zedMedia";
+            this.zedMedia.ScrollGrace = 0D;
+            this.zedMedia.ScrollMaxX = 0D;
+            this.zedMedia.ScrollMaxY = 0D;
+            this.zedMedia.ScrollMaxY2 = 0D;
+            this.zedMedia.ScrollMinX = 0D;
+            this.zedMedia.ScrollMinY = 0D;
+            this.zedMedia.ScrollMinY2 = 0D;
+            this.zedMedia.Size = new System.Drawing.Size(412, 181);
+            this.zedMedia.TabIndex = 20;
             // 
             // lbMenorDistancia
             // 
@@ -155,6 +155,7 @@
             this.btnLimpar.TabIndex = 15;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnExecutar
             // 
@@ -166,6 +167,7 @@
             this.btnExecutar.TabIndex = 14;
             this.btnExecutar.Text = "Executar/Continuar";
             this.btnExecutar.UseVisualStyleBackColor = true;
+            this.btnExecutar.Click += new System.EventHandler(this.btnExecutar_Click);
             // 
             // btnCriarPop
             // 
@@ -195,6 +197,7 @@
             // rbGenesPop
             // 
             this.rbGenesPop.AutoSize = true;
+            this.rbGenesPop.Enabled = false;
             this.rbGenesPop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbGenesPop.Location = new System.Drawing.Point(6, 59);
             this.rbGenesPop.Name = "rbGenesPop";
@@ -298,15 +301,15 @@
             this.txtTaxaCrossover.TabIndex = 5;
             this.txtTaxaCrossover.Text = "0600";
             // 
-            // txtNamePop
+            // txtTamanhoPop
             // 
-            this.txtNamePop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNamePop.Location = new System.Drawing.Point(162, 6);
-            this.txtNamePop.Mask = "00000";
-            this.txtNamePop.Name = "txtNamePop";
-            this.txtNamePop.Size = new System.Drawing.Size(100, 26);
-            this.txtNamePop.TabIndex = 4;
-            this.txtNamePop.Text = "50";
+            this.txtTamanhoPop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTamanhoPop.Location = new System.Drawing.Point(162, 6);
+            this.txtTamanhoPop.Mask = "00000";
+            this.txtTamanhoPop.Name = "txtTamanhoPop";
+            this.txtTamanhoPop.Size = new System.Drawing.Size(100, 26);
+            this.txtTamanhoPop.TabIndex = 4;
+            this.txtTamanhoPop.Text = "50";
             // 
             // label4
             // 
@@ -417,7 +420,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MaskedTextBox txtNamePop;
+        private System.Windows.Forms.MaskedTextBox txtTamanhoPop;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox txtQtdeElitismo;
         private System.Windows.Forms.CheckBox chElitismo;
@@ -436,7 +439,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbEvolucoes;
         private System.Windows.Forms.Label label6;
-        private ZedGraph.ZedGraphControl zedGraphControl1;
+        private ZedGraph.ZedGraphControl zedMedia;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lbQtdeCidades;
         private System.Windows.Forms.Label lbComplex;

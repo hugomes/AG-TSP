@@ -164,7 +164,7 @@ namespace AG_TSP.AGClass
                 secondPoint = tmpPoint;
             }
 
-            Console.WriteLine("P1: "+firstPoint+" - P2: "+secondPoint);
+            //Console.WriteLine("P1: "+firstPoint+" - P2: "+secondPoint);
 
             newInd[0] = new Individual();
             newInd[1] = new Individual();
@@ -243,13 +243,13 @@ namespace AG_TSP.AGClass
                 int genePosition1 = ConfigurationGA.Random.Next(0, ConfigurationGA.SizeChromosome - 1);
                 int genePosition2 = ConfigurationGA.Random.Next(0, ConfigurationGA.SizeChromosome - 1);
 
-                Console.WriteLine("GP1: " + genePosition1 + " - GP2: " + genePosition2);
+                //Console.WriteLine("GP1: " + genePosition1 + " - GP2: " + genePosition2);
 
                 while (genePosition1 == genePosition2)
                 {
                     genePosition2 = ConfigurationGA.Random.Next(0, ConfigurationGA.SizeChromosome - 1);
                 }
-                Console.WriteLine("NGP1: " + genePosition1 + " - NGP2: " + genePosition2);
+                //Console.WriteLine("NGP1: " + genePosition1 + " - NGP2: " + genePosition2);
                 ind.Mutate(genePosition1, genePosition2);
                 return ind;
             }
@@ -271,13 +271,13 @@ namespace AG_TSP.AGClass
                     int genePosition1 = ConfigurationGA.Random.Next(0, ConfigurationGA.SizeChromosome - 1);
                     int genePosition2 = ConfigurationGA.Random.Next(0, ConfigurationGA.SizeChromosome - 1);
 
-                    Console.WriteLine("GP1: " + genePosition1 + " - GP2: " + genePosition2);
+                    //Console.WriteLine("GP1: " + genePosition1 + " - GP2: " + genePosition2);
 
                     while (genePosition1 == genePosition2)
                     {
                         genePosition2 = ConfigurationGA.Random.Next(0, ConfigurationGA.SizeChromosome - 1);
                     }
-                    Console.WriteLine("NGP1: " + genePosition1 + " - NGP2: " + genePosition2);
+                    //Console.WriteLine("NGP1: " + genePosition1 + " - NGP2: " + genePosition2);
                     population.GetPopulation()[i].Mutate(genePosition1, genePosition2);
                 }
             }
@@ -295,7 +295,7 @@ namespace AG_TSP.AGClass
             for (int i = 0; i < ConfigurationGA.NumberOfCompetitors; i++)
             {
                 competitors[i] = pop.GetPopulation()[ConfigurationGA.Random.Next(0, ConfigurationGA.SizePopulation - 1)];
-                Console.WriteLine(competitors[i]);
+                //Console.WriteLine(competitors[i]);
                 //escolher o vencedor
                 if (competitors[i].GetFitness() < champion.GetFitness())
                     champion = competitors[i];

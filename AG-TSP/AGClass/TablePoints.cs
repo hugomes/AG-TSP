@@ -102,7 +102,7 @@ namespace AG_TSP.AGClass
             int[] arrayCoordinates = new int[2];
             arrayCoordinates[0] = int.Parse(X[point].ToString());
             arrayCoordinates[1] = int.Parse(Y[point].ToString());
-            return null;
+            return arrayCoordinates;
         }
 
         public static void Clear()
