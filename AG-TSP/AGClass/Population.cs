@@ -71,6 +71,7 @@ namespace AG_TSP.AGClass
         //ordenar a populacao do melhor para o pior
         public void OrderPopulation()
         {
+            PopulationGroup.OrderBy(p => p.GetFitness());
             Individual aux;
 
             for (int i = 0; i < ConfigurationGA.SizePopulation; i++)

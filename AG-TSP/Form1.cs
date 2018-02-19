@@ -124,9 +124,12 @@ namespace AG_TSP
 
         private void btnCriarPop_Click(object sender, EventArgs e)
         {
-            ConfigurationGA.SizePopulation = 5;
-            Population population = new Population();
-            Console.WriteLine(population.GetBest() +Environment.NewLine+ population.GetBad());
+            ConfigurationGA.SizePopulation = 10;
+            ConfigurationGA.NumberOfCompetitors = 3;
+
+            Population pop = new Population();
+            GeneticAlgorithm ag = new GeneticAlgorithm();
+            Console.WriteLine(ag.Tournament(pop));
         }
     }
 }

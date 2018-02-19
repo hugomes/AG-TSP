@@ -82,7 +82,7 @@ namespace AG_TSP.AGClass
                 pointOne != pointTwo)
             {
                 int temp = Chromosome[pointOne];
-                Chromosome[pointOne] = pointTwo;
+                Chromosome[pointOne] = Chromosome[pointTwo];
                 Chromosome[pointTwo] = temp;
             }
         }

@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AGClass\ConfigurationGA.cs" />
+    <Compile Include="AGClass\GeneticAlgorithm.cs" />
     <Compile Include="AGClass\Individual.cs" />
     <Compile Include="AGClass\Population.cs" />
     <Compile Include="AGClass\TablePoints.cs" />
