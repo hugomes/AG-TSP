@@ -28,6 +28,70 @@ namespace AG_TSP.AGClass
             RateMutation = ConfigurationGA.RateMutation;
         }
 
+        private Individual TwoOptSwap(Individual individual, int i, int k)
+        {
+            Individual tempIndividual = new Individual();
+            for (int j = 0; j < ConfigurationGA.SizeChromosome; j++)
+            {
+                tempIndividual.SetGene(j, individual.GetGene(j));
+            }
+
+            Individual reutrnIndividual = new Individual();
+            
+            // 1. take route[0] to route[i-1] and add them in order to new_route
+            for (var c = 0; c <= i - 1; ++c)
+            {
+                reutrnIndividual.SetGene(c, tempIndividual.GetGene(c));
+            }
+
+            // 2. take route[i] to route[k] and add them in reverse order to new_route
+            var dec = 0;
+            for (var c = i; c <= k; ++c)
+            {
+                reutrnIndividual.SetGene(c, tempIndividual.GetGene(k - dec));
+                dec++;
+            }
+
+            // 3. take route[k+1] to end and add them in order to new_route
+            for (var c = k + 1; c < ConfigurationGA.SizeChromosome; ++c)
+            {
+                reutrnIndividual.SetGene(c, tempIndividual.GetGene(c));
+            }
+
+            return reutrnIndividual;
+        }
+
+        private Individual TwoOpt(Individual individual)
+        {
+            int improve = 0;
+            Individual newTwoOptIndividual;
+            //while (improve < ConfigurationGA.SizeChromosome * 10)
+            //while (improve < 5)
+            //{
+                double bestFitnessEliteIndividual = individual.GetFitness();
+                for (int j = 1; j < ConfigurationGA.SizeChromosome - 1; j++)
+                {
+                    for (int k = j + 1; k < ConfigurationGA.SizeChromosome; k++)
+                    {
+                        newTwoOptIndividual = TwoOptSwap(individual, j, k);
+                        newTwoOptIndividual.CalcFitness();
+                        if (newTwoOptIndividual.GetFitness() < bestFitnessEliteIndividual)
+                        {
+                            improve = 0;
+                            for (int l = 0; l < ConfigurationGA.SizeChromosome; l++)
+                            {
+                                individual.SetGene(l, newTwoOptIndividual.GetGene(l));
+                            }
+                            individual.SetFitness(newTwoOptIndividual.GetFitness());
+                            bestFitnessEliteIndividual = newTwoOptIndividual.GetFitness();
+                        }
+                    }
+                }
+                improve++;
+            //}
+            return individual;
+        }
+
         /// <summary>
         /// execucao do ag - faz o elitismo, seleção cruzamento e mutação
         /// </summary>
@@ -56,7 +120,9 @@ namespace AG_TSP.AGClass
                 pop.OrderPopulation();
                 for (int i = 0; i < ConfigurationGA.SizeElitism; i++)
                 {
-                    indElite[i] = pop.GetPopulation()[i];
+                    //cria um novo indice com os melhores
+                    //indElite[i] = pop.GetPopulation()[i];
+                    indElite[i] = TwoOpt(pop.GetPopulation()[i]);
                 }
             }
 
@@ -68,8 +134,9 @@ namespace AG_TSP.AGClass
 
                 //cruzamento dos pais
                 double sortCrossNum = ConfigurationGA.Random.NextDouble();
-                if (sortCrossNum < RateCrossover)
+                if (sortCrossNum <= RateCrossover)
                 {
+                    //Console.WriteLine("Crossover em: "+i);
                     Individual[] children = CrossoverDelegateFunction(father1, father2);
 
                     //mutacao dos filhos
@@ -120,6 +187,7 @@ namespace AG_TSP.AGClass
                 int count = 0;
                 for (int i = initPoint; i < ConfigurationGA.SizePopulation; i++)
                 {
+                    //substitui os piores pelos melhores, de acordo com a quantidade definida em SizeElitism
                     newPopulation.SetIndividuals(i, indElite[count]);
                     count++;
                 }
@@ -240,6 +308,7 @@ namespace AG_TSP.AGClass
         {
             if (ConfigurationGA.Random.NextDouble() <= RateMutation)
             {
+                //Console.WriteLine("Mutação");
                 int genePosition1 = ConfigurationGA.Random.Next(0, ConfigurationGA.SizeChromosome - 1);
                 int genePosition2 = ConfigurationGA.Random.Next(0, ConfigurationGA.SizeChromosome - 1);
 

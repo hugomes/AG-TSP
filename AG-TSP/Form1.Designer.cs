@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbUltimaEvolucao = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.zedMedia = new ZedGraph.ZedGraphControl();
             this.lbMenorDistancia = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -58,6 +60,7 @@
             this.lbQtdeCidades = new System.Windows.Forms.Label();
             this.lbComplex = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.gbMutacao.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +68,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.lbUltimaEvolucao);
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.zedMedia);
             this.panel1.Controls.Add(this.lbMenorDistancia);
             this.panel1.Controls.Add(this.label8);
@@ -90,6 +96,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(431, 462);
             this.panel1.TabIndex = 1;
+            // 
+            // lbUltimaEvolucao
+            // 
+            this.lbUltimaEvolucao.AutoSize = true;
+            this.lbUltimaEvolucao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUltimaEvolucao.Location = new System.Drawing.Point(395, 218);
+            this.lbUltimaEvolucao.Name = "lbUltimaEvolucao";
+            this.lbUltimaEvolucao.Size = new System.Drawing.Size(32, 22);
+            this.lbUltimaEvolucao.TabIndex = 22;
+            this.lbUltimaEvolucao.Text = "00";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(229, 216);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(160, 22);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Última Evolução:";
             // 
             // zedMedia
             // 
@@ -149,9 +175,9 @@
             // 
             this.btnLimpar.Enabled = false;
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(268, 169);
+            this.btnLimpar.Location = new System.Drawing.Point(268, 183);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(159, 46);
+            this.btnLimpar.Size = new System.Drawing.Size(159, 32);
             this.btnLimpar.TabIndex = 15;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
@@ -161,9 +187,9 @@
             // 
             this.btnExecutar.Enabled = false;
             this.btnExecutar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExecutar.Location = new System.Drawing.Point(268, 117);
+            this.btnExecutar.Location = new System.Drawing.Point(268, 106);
             this.btnExecutar.Name = "btnExecutar";
-            this.btnExecutar.Size = new System.Drawing.Size(159, 46);
+            this.btnExecutar.Size = new System.Drawing.Size(159, 35);
             this.btnExecutar.TabIndex = 14;
             this.btnExecutar.Text = "Executar/Continuar";
             this.btnExecutar.UseVisualStyleBackColor = true;
@@ -175,7 +201,7 @@
             this.btnCriarPop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCriarPop.Location = new System.Drawing.Point(268, 65);
             this.btnCriarPop.Name = "btnCriarPop";
-            this.btnCriarPop.Size = new System.Drawing.Size(159, 46);
+            this.btnCriarPop.Size = new System.Drawing.Size(159, 35);
             this.btnCriarPop.TabIndex = 13;
             this.btnCriarPop.Text = "Criar População";
             this.btnCriarPop.UseVisualStyleBackColor = true;
@@ -263,6 +289,8 @@
             // chElitismo
             // 
             this.chElitismo.AutoSize = true;
+            this.chElitismo.Checked = true;
+            this.chElitismo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chElitismo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chElitismo.Location = new System.Drawing.Point(300, 9);
             this.chElitismo.Name = "chElitismo";
@@ -391,6 +419,17 @@
             this.label10.TabIndex = 4;
             this.label10.Text = "Complexidade: ";
             // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(268, 147);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(159, 30);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "2-OPT";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -444,6 +483,9 @@
         private System.Windows.Forms.Label lbQtdeCidades;
         private System.Windows.Forms.Label lbComplex;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbUltimaEvolucao;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button1;
     }
 }
 

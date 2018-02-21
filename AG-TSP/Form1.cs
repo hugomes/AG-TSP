@@ -168,7 +168,7 @@ namespace AG_TSP
             ITemp = 0;
             Evolucoes = 0;
             lbEvolucoes.Text = "00";
-            lbComplex.Text = "--";
+            lbComplex.Text = "0";
 
             MediaPopulacao.Clear();
             zedMedia.Refresh();
@@ -251,6 +251,8 @@ namespace AG_TSP
                     G.Clear(Color.White);
                     PlotLines(Pop, Color.Blue);
                     PlotPoints();
+                    lbUltimaEvolucao.Text = (i + 1).ToString();
+                    lbUltimaEvolucao.Refresh();
                 }
 
                 zedMedia.AxisChange();
